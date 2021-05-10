@@ -1,0 +1,38 @@
+#header .pro-sidebar {
+  height: 100vh;
+  position: fixed;
+}
+#header .pro-sidebar.collapsed {
+  min-width: 80px;
+}
+#header .pro-sidebar-inner {
+  background-color: #3c096c;
+  box-shadow: 0.5px 0.866px 2px 0px rgba(0, 0, 0, 0.15);
+}
+#header .pro-sidebar-inner .pro-sidebar-layout .logotext p {
+  font-size: 20px;
+  padding: 0 20px;
+  color: #000;
+  font-weight: bold;
+}
+
+#header
+  .pro-sidebar-inner
+  .pro-sidebar-layout
+  ul
+  .pro-inner-item
+  .pro-icon-wrapper {
+  color: #000;
+  border-radius: 3px;
+  width: 100%;
+  height: 8vh;
+}
+#header
+  .pro-sidebar-inner
+  .pro-sidebar-layout
+  ul
+  .pro-inner-item
+  .pro-icon-wrapper
+  .pro-item-content {
+  color: #000;
+}
