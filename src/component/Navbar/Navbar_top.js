@@ -8,9 +8,9 @@ import {
   NavBtnLink,
 } from "./Navbar_topElement";
 import logo from "../../assets/NoCopyRightCloud-removebg-preview.png";
-import * as fi from "react-icons/fi";
+// import * as fi from "react-icons/fi";
 import * as md from "react-icons/md";
-import { Button, IconButton, ButtonGroup, ButtonToolbar } from "rsuite";
+import { IconButton } from "rsuite";
 const TopNavbar = () => {
   return (
     <>
