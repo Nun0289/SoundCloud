@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Nav,
   NavLink,
@@ -10,10 +10,17 @@ import {
 import logo from "../../assets/NoCopyRightCloud-removebg-preview.png";
 // import * as fi from "react-icons/fi";
 import * as md from "react-icons/md";
-import { IconButton } from "rsuite";
+import Authentication from "../../page/Authentication";
+import { Button, IconButton, ButtonGroup, ButtonToolbar } from "rsuite";
+import LoginPopup from "../../component/LoginPopup";
+
 const TopNavbar = () => {
+  const [showPopUp, setShowPopUp] = useState(false);
   return (
     <>
+      <Authentication trigger={showPopUp} setTrigger={setShowPopUp}>
+        <LoginPopup />
+      </Authentication>
       <Nav>
         <NavLink to="/">
           <img
@@ -43,7 +50,20 @@ const TopNavbar = () => {
           />
         </NavMenu>
         <NavBtn>
-          <NavBtnLink to="/signin">Sign In</NavBtnLink>
+          <button
+            onClick={() => setShowPopUp(true)}
+            style={{
+              backgroundColor: "#A03FE9",
+              color: "#FFF",
+              paddingTop: "10px",
+              paddingBottom: "10px",
+              paddingRight: "20px",
+              paddingLeft: "20px",
+              borderRadius: "10px",
+            }}
+          >
+            Sign In
+          </button>
         </NavBtn>
       </Nav>
     </>

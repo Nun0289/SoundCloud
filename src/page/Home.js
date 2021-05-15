@@ -11,15 +11,25 @@ export const Home = () => {
         justifyContent: "center",
         alignItems: "center",
         backgroundColor: "#3c096c",
+        width: "100%",
+        flexDirection: "row",
       }}
     >
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
+          backgroundColor: "#3c096c",
+          width: "100%",
+        }}
+      ></div>
       <div
         style={{
           display: "grid",
           width: "100%",
           backgroundColor: "#10002B",
-          marginLeft: "6em",
-          flex: "3",
+          flex: "1",
           flexDirection: "column",
         }}
       >

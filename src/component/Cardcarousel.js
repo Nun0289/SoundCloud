@@ -67,7 +67,7 @@ const Cardcarousel = ({ name }) => {
       }}
     >
       <div>
-        <h3 style={{ textAlign: "left" }}>{name}</h3>
+        <h3 style={{ textAlign: "left", color: "#39ff14" }}>{name}</h3>
       </div>
       <Carousel
         additionalTransfrom={0}
