@@ -13,18 +13,16 @@ import UploadMusic from "./page/UploadMusic";
 function App() {
   return (
     <div className="App">
-      <Router>
-        <TopNavbar />
-        <SideNavbar />
-        <Switch>
-          <Route path="/" exact component={Home} />
-          <Route path="/createalbum" exact component={CreateAlbum} />
-          <Route path="/createpost" exact component={CreatePost} />
-          <Route path="/editprofile" exact component={EditProfile} />
-          <Route path="/uploadmusic" exact component={UploadMusic} />
-        </Switch>
-        <Footer />
-      </Router>
+      <TopNavbar />
+      <SideNavbar />
+      <Switch>
+        <Route path="/" exact component={Home} />
+        <Route path="/createalbum" exact component={CreateAlbum} />
+        <Route path="/createpost" exact component={CreatePost} />
+        <Route path="/editprofile" exact component={EditProfile} />
+        <Route path="/uploadmusic" exact component={UploadMusic} />
+      </Switch>
+      <Footer />
     </div>
   );
 }
