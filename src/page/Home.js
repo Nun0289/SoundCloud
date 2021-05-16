@@ -1,9 +1,20 @@
 import React from "react";
 import "react-awesome-slider/dist/styles.css";
 import Cardcarousel from "../component/Cardcarousel.js";
-import Tabletopweek from "../component/Table.js";
+import Tabletopweek from "../component/Table";
 import Eventcarousel from "../component/Eventcarousel.js";
+import { SHOW_MUSICS_LIST_QUERY } from "../GraphQL/musicListsQuery";
+import { useQuery } from "@apollo/client";
 export const Home = () => {
+  const { loading, error, data } = useQuery(SHOW_MUSICS_LIST_QUERY);
+  if (loading) {
+    return "Loading ...";
+  }
+  if (error) {
+    console.log(error);
+    return "Error !!";
+  }
+  console.log(data);
   return (
     <div
       style={{
@@ -65,7 +76,7 @@ export const Home = () => {
             alignItems: "center",
           }}
         >
-          <Cardcarousel name={"Top 10 Week"} />
+          <Cardcarousel name={"Top 10 Week"} datas={data.Top10Music} />
         </div>
         {/* .................................................................... */}
         {/* table rank*/}
@@ -77,7 +88,7 @@ export const Home = () => {
             justifyContent: "center",
           }}
         >
-          <Tabletopweek />
+          <Tabletopweek datas={data.Top10Music}/>
         </div>
         {/*...................*/}
         {/* gallery song */}
@@ -88,7 +99,7 @@ export const Home = () => {
             alignItems: "center",
           }}
         >
-          <Cardcarousel name={"Thai song"} />
+          <Cardcarousel name={"Thai song"} datas={data.ThaiMusic} />
         </div>
         <div
           style={{
@@ -97,7 +108,7 @@ export const Home = () => {
             alignItems: "center",
           }}
         >
-          <Cardcarousel name={"Inter Song"} />
+          <Cardcarousel name={"Inter Song"} datas={data.InterMusic} />
         </div>
         <div
           style={{
@@ -106,7 +117,7 @@ export const Home = () => {
             alignItems: "center",
           }}
         >
-          <Cardcarousel name={"EDM Song"} />
+          <Cardcarousel name={"EDM Song"} datas={data.EdmMusic} />
         </div>
         {/* .................................................................... */}
       </div>

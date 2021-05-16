@@ -1,7 +1,6 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { Card } from "react-bootstrap";
-
 const datalist = [
   {
     img: "https://images.unsplash.com/photo-1549396535-c11d5c55b9df?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60",
@@ -57,7 +56,8 @@ const datalist = [
 //     slidesToSlide: 1, // optional, default to 1.
 //   },
 // };
-const Cardcarousel = ({ name }) => {
+const Cardcarousel = ({ name, datas }) => {
+  console.log(datas);
   return (
     <div
       style={{
@@ -115,18 +115,18 @@ const Cardcarousel = ({ name }) => {
         slidesToSlide={1}
         swipeable
       >
-        {datalist.map((data) => {
+        {datas.map((data) => {
           return (
             <div>
               <Card style={{ width: "15rem", backgroundColor: "#FFF" }}>
                 <Card.Img
                   variant="top"
-                  src={data.img}
+                  src={data?.img}
                   style={{ height: "120px" }}
                 />
                 <Card.Body>
-                  <Card.Title>{data.name}</Card.Title>
-                  <Card.Text>{data.description}</Card.Text>
+                  <Card.Title>{data?.name}</Card.Title>
+                  <Card.Text>{data?.description}</Card.Text>
                 </Card.Body>
               </Card>
             </div>
