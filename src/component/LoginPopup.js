@@ -1,12 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useCallback } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
-
+import { useSession } from "../Contexts/SessionContext";
+import { REGISTER_MUTATION } from "../GraphQL/registerMutation";
+import { useMutation } from "@apollo/client";
 import logo from "../assets/NoCopyRightCloud-removebg-preview.png";
 import bgvideo from "../assets/4K_168.mp4";
 import crvideo from "../assets/create.mp4";
 import "../css/LoginPopup.css";
 const LoginPopup = () => {
+  const { login } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -16,11 +19,47 @@ const LoginPopup = () => {
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
-
-  function handleSubmit(event) {
-    event.preventDefault();
-  }
-
+  const handleLogin = useCallback(
+    async (e) => {
+      e.preventDefault();
+      try {
+        await login(email, password);
+      } catch (err) {
+        alert(err?.message);
+      }
+    },
+    [login, password, email]
+  );
+  const [addUser] = useMutation(REGISTER_MUTATION, {
+    update(result) {
+      console.log(result);
+      alert("สมัครสมาชิกเรียบร้อย!!!!!!!!!!");
+    },
+    onError(err) {
+      console.log(err.graphQLErrors[0].extensions.exception.message);
+    },
+    variables: {
+      record: {
+        role: "Guest",
+        username: email,
+        fullname: name,
+        password: password,
+        email: email,
+      },
+    },
+  });
+  const handleRegister = useCallback(
+    async (e) => {
+      e.preventDefault();
+      try {
+        addUser();
+        await login(email, password);
+      } catch (err) {
+        alert(err?.message);
+      }
+    },
+    [login, password, email, addUser]
+  );
   return (
     <>
       {onLogin == true && onRegister == false ? (
@@ -96,7 +135,7 @@ const LoginPopup = () => {
             <div className="group">
               <h1>Login</h1>
               <div className="Login">
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleLogin}>
                   <Form.Group size="lg" controlId="email">
                     <Form.Label>Email</Form.Label>
                     <Form.Control
@@ -164,7 +203,7 @@ const LoginPopup = () => {
             <div className="group">
               <h2>Create NewUser</h2>
               <div className="Createuser">
-                <Form onSubmit={handleSubmit}>
+                <Form onSubmit={handleRegister}>
                   <Form.Group size="lg" controlId="name">
                     <Form.Label>Name</Form.Label>
                     <Form.Control
