@@ -42,7 +42,7 @@ const Cardcarousel = ({ name, datas }) => {
       // your custom validate
       if (window.confirm("Are you confirm destroy the player?")) {
         // if resolve, player destroyed
-        resolve();
+        setisplaysong(false);
       } else {
         // if reject, skip.
         reject();
@@ -52,10 +52,20 @@ const Cardcarousel = ({ name, datas }) => {
   const onDestroyed = (currentPlayId, audioLists, audioInfo) => {
     console.log("onDestroyed:", currentPlayId, audioLists, audioInfo);
   };
+  const [beforesong, setbeforesong] = useState(false);
   const [isplaysong, setisplaysong] = useState(false);
   const [idsong, setidsong] = useState(0);
   const playmusic = (id) => {
-    return setisplaysong(true), setidsong(id);
+    if (beforesong) {
+      setisplaysong(false);
+      setidsong(id);
+      setisplaysong(true);
+      setbeforesong(true);
+    } else {
+      setidsong(id);
+      setisplaysong(true);
+      setbeforesong(true);
+    }
   };
   return (
     <div

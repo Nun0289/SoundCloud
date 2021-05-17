@@ -134,7 +134,7 @@ const LoginPopup = () => {
               justifyContent: "center",
             }}
           >
-            <div className="group">
+            <div className="popupgroup">
               <h1>Login</h1>
               <div className="Login">
                 <Form onSubmit={handleLogin}>
