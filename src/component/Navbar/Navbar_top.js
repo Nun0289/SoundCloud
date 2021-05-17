@@ -17,11 +17,11 @@ import { NavDropdown } from "react-bootstrap";
 
 const TopNavbar = () => {
   const [showPopUp, setShowPopUp] = useState(false);
-  const [login, setlogin] = useState(true);
+  const [login, setlogin] = useState(false);
   return (
     <>
       <Authentication trigger={showPopUp} setTrigger={setShowPopUp}>
-        <LoginPopup />
+        <LoginPopup setlogin={setlogin} setShowPopUp={setShowPopUp} />
       </Authentication>
       <Nav>
         <NavLink to="/">
@@ -53,7 +53,7 @@ const TopNavbar = () => {
         </NavMenu>
         {login ? (
           <NavDropdown
-            title="username"
+            title="test01"
             id="basic-nav-dropdown"
             style={{ paddingTop: "0.5%", paddingRight: "1%" }}
           >
