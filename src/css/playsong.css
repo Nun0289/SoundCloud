@@ -1,0 +1,19 @@
+.group {
+  flex-direction: row;
+}
+.react-jinke-music-player-main
+  .music-player-panel
+  .panel-content
+  .rc-slider-handle,
+.react-jinke-music-player-main
+  .music-player-panel
+  .panel-content
+  .rc-slider-track {
+  background-color: #39ff14;
+}
+.progress-bar {
+  background-color: #000;
+}
+.card-body {
+  height: 100px;
+}

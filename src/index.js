@@ -30,13 +30,13 @@ const client = new ApolloClient({
 ReactDOM.render(
   <React.StrictMode>
     <CookiesProvider>
-      <Router>
+    <Router basename="/">
         <ApolloProvider client={client}>
           <SessionProvider>
             <App />
           </SessionProvider>
         </ApolloProvider>
-      </Router>
+    </Router>
     </CookiesProvider>
   </React.StrictMode>,
   document.getElementById("root")

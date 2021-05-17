@@ -25,16 +25,16 @@ export const SessionProvider = (props) => {
   });
   const [login] = useMutation(LOGIN_MUTATION);
   const handleLogin = useCallback(
-    async (username, password) => {
-      const res = await login({ variables: { username, password } });
+    async (email, password) => {
+      const res = await login({ variables: { email, password } });
       if (res?.data?.login?.token) {
         setCookie("token", res?.data?.login?.token, { maxAge: 86400 });
         setUser(res?.data?.login?.user);
-        // history.push("/customer");
-        if (res?.data?.login?.user?.role === "Customer") {
+        if (res?.data?.login?.user?.role === "Guest") {
           alert("Welcome Guest!!!");
+          console.log(res);
           console.log(history);
-          //   history.push("/");
+          // history.push("/");
         } else {
           alert("Welcome Admin!!!");
           console.log(history);

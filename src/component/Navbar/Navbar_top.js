@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import {
   Nav,
   NavLink,
@@ -10,10 +10,19 @@ import {
 import logo from "../../assets/NoCopyRightCloud-removebg-preview.png";
 // import * as fi from "react-icons/fi";
 import * as md from "react-icons/md";
-import { IconButton } from "rsuite";
+import Authentication from "../../page/Authentication";
+import { Button, IconButton, ButtonGroup, ButtonToolbar } from "rsuite";
+import LoginPopup from "../../component/LoginPopup";
+import { NavDropdown } from "react-bootstrap";
+
 const TopNavbar = () => {
+  const [showPopUp, setShowPopUp] = useState(false);
+  const [login, setlogin] = useState(true);
   return (
     <>
+      <Authentication trigger={showPopUp} setTrigger={setShowPopUp}>
+        <LoginPopup />
+      </Authentication>
       <Nav>
         <NavLink to="/">
           <img
@@ -42,9 +51,47 @@ const TopNavbar = () => {
             icon={<md.MdSearch size={"100%"} style={{ color: "#FFF" }} />}
           />
         </NavMenu>
-        <NavBtn>
-          <NavBtnLink to="/signin">Sign In</NavBtnLink>
-        </NavBtn>
+        {login ? (
+          <NavDropdown
+            title="username"
+            id="basic-nav-dropdown"
+            style={{ paddingTop: "0.5%", paddingRight: "1%" }}
+          >
+            <NavDropdown.Item href="/editprofile">
+              Manage Profile
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item href="#action/3.2">
+              Forget Password
+            </NavDropdown.Item>
+            <NavDropdown.Divider />
+            <NavDropdown.Item
+              href="/"
+              onClick={() => {
+                setlogin(false);
+              }}
+            >
+              Sign Out
+            </NavDropdown.Item>
+          </NavDropdown>
+        ) : (
+          <NavBtn>
+            <button
+              onClick={() => setShowPopUp(true)}
+              style={{
+                backgroundColor: "#A03FE9",
+                color: "#FFF",
+                paddingTop: "10px",
+                paddingBottom: "10px",
+                paddingRight: "20px",
+                paddingLeft: "20px",
+                borderRadius: "10px",
+              }}
+            >
+              Sign In
+            </button>
+          </NavBtn>
+        )}
       </Nav>
     </>
   );

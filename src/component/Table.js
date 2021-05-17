@@ -1,69 +1,6 @@
 import React from "react";
 import { Table } from "react-bootstrap";
-
-const datalist = [
-  {
-    rank: 1,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 2,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 3,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 4,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 5,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 6,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 7,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 8,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 9,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-  {
-    rank: 10,
-    song: "อยากโดนช้อนเเกง",
-    artist: "เเจ๊กเเป๊โฮ",
-    votes: 69,
-  },
-];
-export const Tabletopweek = () => {
+const Tabletopweek = ({datas}) => {
   return (
     <div
       style={{
@@ -83,13 +20,13 @@ export const Tabletopweek = () => {
           </tr>
         </thead>
         <tbody>
-          {datalist.map((data) => {
+          {datas?.map((data,i) => {
             return (
               <tr>
-                <td>{data.rank}</td>
-                <td>{data.song}</td>
-                <td>{data.artist}</td>
-                <td>{data.votes}</td>
+                <td>{i+1}</td>
+                <td>{data?.name}</td>
+                <td>{data?.artistName}</td>
+                <td>{data?.votes}</td>
               </tr>
             );
           })}
