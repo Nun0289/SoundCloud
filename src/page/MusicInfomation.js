@@ -1,4 +1,5 @@
 import React from "react";
+import playmusic from "../component/playsong/playsong";
 const MusicInfomation = () => {
   return (
     <div
@@ -9,6 +10,7 @@ const MusicInfomation = () => {
         backgroundColor: "#3c096c",
       }}
     >
+      <playmusic />
       <div
         style={{
           display: "grid",

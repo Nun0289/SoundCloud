@@ -2,7 +2,7 @@ import "./App.css";
 import SideNavbar from "./component/Navbar/Navbar_Side";
 import TopNavbar from "./component/Navbar/Navbar_top";
 import Footer from "./component/Footer";
-import { Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Home from "./page/Home";
 import CreateAlbum from "./page/CreateAlbum";
 import CreatePost from "./page/CreatePost";

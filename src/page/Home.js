@@ -1,10 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import "react-awesome-slider/dist/styles.css";
 import Cardcarousel from "../component/Cardcarousel.js";
 import Tabletopweek from "../component/Table";
 import Eventcarousel from "../component/Eventcarousel.js";
 import { SHOW_MUSICS_LIST_QUERY } from "../GraphQL/musicListsQuery";
 import { useQuery } from "@apollo/client";
+import ReactDOM from "react-dom";
+import ReactJkMusicPlayer from "react-jinke-music-player";
+import "react-jinke-music-player/assets/index.css";
+const onBeforeDestroy = (currentPlayId, audioLists, audioInfo) => {
+  return new Promise((resolve, reject) => {
+    // your custom validate
+    if (window.confirm("Are you confirm destroy the player?")) {
+      // if resolve, player destroyed
+      resolve();
+    } else {
+      // if reject, skip.
+      reject();
+    }
+  });
+};
+const onDestroyed = (currentPlayId, audioLists, audioInfo) => {
+  console.log("onDestroyed:", currentPlayId, audioLists, audioInfo);
+};
+
 export const Home = () => {
   const { loading, error, data } = useQuery(SHOW_MUSICS_LIST_QUERY);
   if (loading) {
@@ -124,4 +143,5 @@ export const Home = () => {
     </div>
   );
 };
+
 export default Home;
