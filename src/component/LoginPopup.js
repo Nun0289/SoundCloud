@@ -5,6 +5,7 @@ import Button from "react-bootstrap/Button";
 import logo from "../assets/NoCopyRightCloud-removebg-preview.png";
 import bgvideo from "../assets/4K_168.mp4";
 import crvideo from "../assets/create.mp4";
+import playmusic from "../component/playsong/playsong";
 import "../css/LoginPopup.css";
 const LoginPopup = () => {
   const [email, setEmail] = useState("");
@@ -34,6 +35,7 @@ const LoginPopup = () => {
             borderRadius: "20px",
           }}
         >
+          <playmusic />
           <div
             style={{
               backgroundColor: "#000",
