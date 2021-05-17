@@ -32,8 +32,9 @@ export const SessionProvider = (props) => {
         setUser(res?.data?.login?.user);
         if (res?.data?.login?.user?.role === "Guest") {
           alert("Welcome Guest!!!");
+          console.log(res);
           console.log(history);
-            history.push("/");
+          // history.push("/");
         } else {
           alert("Welcome Admin!!!");
           console.log(history);
