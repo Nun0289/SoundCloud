@@ -31,7 +31,6 @@ export const SessionProvider = (props) => {
         setCookie("token", res?.data?.login?.token, { maxAge: 86400 });
         setUser(res?.data?.login?.user);
         if (res?.data?.login?.user?.role === "Guest") {
-          alert("Welcome Guest!!!");
           console.log(res);
           console.log(history);
           // history.push("/");

@@ -9,7 +9,7 @@ import bgvideo from "../assets/4K_168.mp4";
 import crvideo from "../assets/create.mp4";
 import playmusic from "../component/playsong/playsong";
 import "../css/LoginPopup.css";
-const LoginPopup = () => {
+const LoginPopup = ({ setlogin, setShowPopUp }) => {
   const { login } = useSession();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -20,6 +20,15 @@ const LoginPopup = () => {
   function validateForm() {
     return email.length > 0 && password.length > 0;
   }
+  const handleInputChange = useCallback(
+    (event) => {
+      setlogin(true);
+      setShowPopUp(false);
+      console.log("true");
+    },
+    [setlogin, setShowPopUp]
+  );
+
   const handleLogin = useCallback(
     async (e) => {
       e.preventDefault();
@@ -41,7 +50,7 @@ const LoginPopup = () => {
     },
     variables: {
       record: {
-        role: "Guest",
+        role: "User",
         username: email,
         fullname: name,
         password: password,
@@ -160,6 +169,7 @@ const LoginPopup = () => {
                     size="lg"
                     type="submit"
                     disabled={!validateForm()}
+                    onClick={() => handleInputChange()}
                   >
                     Login
                   </Button>
