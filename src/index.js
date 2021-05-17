@@ -6,10 +6,38 @@ import reportWebVitals from "./reportWebVitals";
 import "@fortawesome/fontawesome-free/css/all.min.css";
 import "bootstrap-css-only/css/bootstrap.min.css";
 import "mdbreact/dist/css/mdb.css";
-
+import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import possibleTypes from "./Cache/possibleTypes.json";
+import { SessionProvider } from "./Contexts/SessionContext";
+import { CookiesProvider } from "react-cookie";
+import { BrowserRouter as Router } from "react-router-dom";
+const client = new ApolloClient({
+  uri: "http://ec2-3-230-171-229.compute-1.amazonaws.com:5001/graphql",
+  cache: new InMemoryCache({
+    possibleTypes,
+    typePolicies: {
+      Project: {
+        fields: {
+          members: {
+            merge: false,
+          },
+        },
+      },
+    },
+  }),
+  credentials: "include",
+});
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <CookiesProvider>
+      <Router>
+        <ApolloProvider client={client}>
+          <SessionProvider>
+            <App />
+          </SessionProvider>
+        </ApolloProvider>
+      </Router>
+    </CookiesProvider>
   </React.StrictMode>,
   document.getElementById("root")
 );
